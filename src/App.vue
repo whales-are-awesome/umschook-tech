@@ -1,14 +1,14 @@
 <template>
     <div class="min-h-[100vh] p-4 bg-[green] bg-opacity-20">
         <ProductsHandler
-            v-if="products.fullyLoaded"
+            v-if="!products.pending"
             class="mb-12"
             v-model="products.data"
         />
         <ProductsList
-            v-if="!products.pending && products.data"
-            :items="products.data"
-            :fully-loaded="products.fullyLoaded"
+            v-if="products.data"
+            :items="!productsFull.pending ? productsFull.data : products.data"
+            :fully-loaded="!productsFull.pending"
         />
         <div v-else-if="products.pending">
             Загрузка данных
@@ -22,7 +22,9 @@
 <script lang="ts" setup>
 import ProductsHandler from '@/modules/ProductsHandler/ProductsHandler.vue';
 import ProductsList from '@/modules/ProductsList/ProductsList.vue';
-import useProducts from '@/modules/ProductsList/hooks/useProducts';
+import useProducts from '@/hooks/useProducts';
+import useFullProducts from '@/hooks/useFullProducts';
 
-const products = useProducts();
+const [products] = useProducts();
+const [productsFull] = useFullProducts(products);
 </script>

@@ -56,6 +56,7 @@ const localValue = ref([...props.modelValue]);
 const classes = useClassTypes();
 const subjects = useSubjects();
 
+
 // VALUES
 
 const classValue = ref('');

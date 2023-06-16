@@ -1,7 +1,7 @@
 interface IFetchData<T> {
     data: T | null
     pending: boolean
-    error: Error | null
+    error?: Error | null
 }
 
 interface IFetchDataFullyLoaded<T> extends IFetchData<T> {
