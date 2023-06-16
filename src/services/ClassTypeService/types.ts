@@ -1,7 +1,7 @@
-import { ISubject as ISubjectEntries} from '@/models/entries/subject';
+import { IClassType as IClassTypeEntries} from '@/types/entries/classType';
 import { IOption as ISelectOption } from '@/UI/SelectField/types';
 
 export {
-    ISubjectEntries as ISubject,
+    IClassTypeEntries as IClassType,
     ISelectOption
 }

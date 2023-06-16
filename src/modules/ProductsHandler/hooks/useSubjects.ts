@@ -1,29 +1,27 @@
-import useFetchData from '@/hooks/useFetchData';
-import ProductService from '@/services/ProductService';
-import { IProductFull } from '@/models/entries/product';
+import { useFetchData } from '@/hooks/useFetchData';
+import SubjectService from '@/services/SubjectService';
+import { ISelectOption } from '@/services/SubjectService/types';
 
-function useProducts() {
-    const products = useFetchData<IProductFull>();
+function useSubjects() {
+    const subjects = useFetchData<ISelectOption[]>();
 
     async function fetchData() {
-        const { data, error } = await ProductService.sampleItems.fetch().raw();
+        const { data, error } = await SubjectService.sampleItems.fetch().asSelect();
 
-        products.value.pending = true;
+        subjects.value.pending = true;
 
         if (!error) {
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            //@ts-ignore
-            products.value.data = data;
+            subjects.value.data = data;
         } else {
-            products.value.error = error;
+            subjects.value.error = error;
         }
 
-        products.value.pending = false;
+        subjects.value.pending = false;
     }
 
     fetchData();
 
-    return products;
+    return subjects;
 }
 
-export default useProducts;
+export default useSubjects;

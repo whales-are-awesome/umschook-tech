@@ -1,11 +1,12 @@
 import API from '@/api';
+import { ISubject } from '@/types/entries/subject';
 
 
 class TeacherService {
     static sample = {
         fetch(id: number) {
             function raw() {
-                return API.get('/api/teachers', id);
+                return API.get<ISubject>('/api/teachers', id);
             }
 
             return {
@@ -17,7 +18,7 @@ class TeacherService {
     static sampleItems = {
         fetch() {
             function raw() {
-                return API.get('/api/teachers');
+                return API.get<ISubject[]>('/api/teachers');
             }
 
             return {
@@ -27,4 +28,4 @@ class TeacherService {
     }
 }
 
-export default SubjectService;
+export default TeacherService;

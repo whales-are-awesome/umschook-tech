@@ -1,7 +1,5 @@
-import { IClassType as IClassTypeEntries} from '@/types/entries/classType';
-import { IOption as ISelectOption } from '@/UI/SelectField/types';
+import { ITeacher as ITeacherEntries} from '@/types/entries/teacher';
 
 export {
-    IClassTypeEntries as IClassType,
-    ISelectOption
+    ITeacherEntries as ITeacher
 }

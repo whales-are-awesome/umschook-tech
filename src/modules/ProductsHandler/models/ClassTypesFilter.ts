@@ -1,10 +1,10 @@
 import { IProductFull } from '@/types/entries/product';
-import { ISubject } from '@/types/entries/subject';
+import { IClassType } from '@/types/entries/classType';
 
-class SubjectsFilter {
-    sort(items: IProductFull[], subjectId?: ISubject['id']) {
-        return items.filter(item => item.subject.id === subjectId);
+class ClassTypesFilter {
+    sort(items: IProductFull[], classTypeId?: IClassType['id']) {
+        return items.filter(item => item.classType.id === classTypeId);
     }
 }
 
-export default SubjectsFilter;
+export default ClassTypesFilter;

@@ -1,34 +1,18 @@
 <template>
-    <div class="bg-white rounded p-2 space-y-3">
-        <div class="font-semibold">
-            {{ subjectName }} - {{ teacherName }}
+    <div class="bg-white rounded p-2 space-y-10">
+        <div class="flex">
+            <div class="w-[100px] h-[20px] bg-opacity-20 bg-black rounded"></div>
+            <div class="mx-2"></div>
+            <div class="w-[100px] h-[20px] bg-opacity-20 bg-black rounded"></div>
         </div>
-        <TextLabel :color="classTypeColor">
-            {{ classTypeName }}
-        </TextLabel>
-        <div>
-            {{ productPrice }} {{ productCurrency }}
+        <div class="w-[40px] h-[20px] bg-opacity-20 bg-black rounded">
+
         </div>
-        <div>
-            {{ description }}
+        <div class="w-[80px] h-[20px] bg-opacity-20 bg-black rounded">
+
+        </div>
+        <div class="w-1/2 h-[50px] bg-opacity-20 bg-black rounded">
+
         </div>
     </div>
 </template>
-
-<script lang="ts" setup>
-import { defineProps } from 'vue';
-
-import TextLabel from './TextLabel.vue';
-
-interface IProps {
-    subjectName: string
-    teacherName: string
-    productPrice: number
-    productCurrency: string
-    classTypeName: string
-    classTypeColor: string
-    description: string
-}
-
-const props = defineProps<IProps>();
-</script>

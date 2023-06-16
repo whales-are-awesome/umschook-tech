@@ -1,5 +1,6 @@
-import { IProduct as IProductEntries } from '@/models/entries/product';
+import { IProduct as IProductEntries, IProductFull as IProductFullEntries } from '@/types/entries/product';
 
 export {
-    IProductEntries as IProduct
+    IProductEntries as IProduct,
+    IProductFullEntries as IProductFull
 }

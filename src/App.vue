@@ -1,27 +1,28 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+    <div class="min-h-[100vh] p-4 bg-[green] bg-opacity-20">
+        <ProductsHandler
+            v-if="products.fullyLoaded"
+            class="mb-12"
+            v-model="products.data"
+        />
+        <ProductsList
+            v-if="!products.pending && products.data"
+            :items="products.data"
+            :fully-loaded="products.fullyLoaded"
+        />
+        <div v-else-if="products.pending">
+            Загрузка данных
+        </div>
+        <div v-else>
+            Ошибка
+        </div>
+    </div>
 </template>
 
-<script lang="ts">
-import { Options, Vue } from 'vue-class-component';
-import HelloWorld from './components/HelloWorld.vue';
+<script lang="ts" setup>
+import ProductsHandler from '@/modules/ProductsHandler/ProductsHandler.vue';
+import ProductsList from '@/modules/ProductsList/ProductsList.vue';
+import useProducts from '@/modules/ProductsList/hooks/useProducts';
 
-@Options({
-  components: {
-    HelloWorld,
-  },
-})
-export default class App extends Vue {}
+const products = useProducts();
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>

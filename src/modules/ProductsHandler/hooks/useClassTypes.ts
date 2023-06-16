@@ -1,29 +1,27 @@
-import useFetchData from '@/hooks/useFetchData';
-import SubjectService from '@/services/SubjectService';
-import { ISelectOption } from '@/services/SubjectService/types';
+import { useFetchData } from '@/hooks/useFetchData';
+import ClassTypeService from '@/services/ClassTypeService';
+import { ISelectOption } from '@/services/ClassTypeService/types';
 
-function useSubjects() {
-    const subjects = useFetchData<ISelectOption[]>();
+function useClassTypes() {
+    const classTypes = useFetchData<ISelectOption[]>();
 
     async function fetchData() {
-        const { data, error } = await SubjectService.sampleItems.fetch().asSelect();
+        const { data, error } = await ClassTypeService.sampleItems.fetch().asSelect();
 
-        subjects.value.pending = true;
+        classTypes.value.pending = true;
 
-        if (!error) {
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            //@ts-ignore
-            subjects.value.data = data;
+        if (data) {
+            classTypes.value.data = data;
         } else {
-            subjects.value.error = error;
+            classTypes.value.error = error;
         }
 
-        subjects.value.pending = false;
+        classTypes.value.pending = false;
     }
 
     fetchData();
 
-    return subjects;
+    return classTypes;
 }
 
-export default useSubjects;
+export default useClassTypes;
