@@ -42,12 +42,12 @@ interface IProps {
     placeholder?: string
 }
 
-// interface IEmits {
-//     'update:modelValue': () => IProps['modelValue']
-// }
+interface IEmits {
+    (e: 'update:modelValue', value: IProps['modelValue']): void
+}
 
 const props = defineProps<IProps>();
-const emit = defineEmits(['update:modelValue']);
+const emit = defineEmits<IEmits>();
 
 
 // VALUE

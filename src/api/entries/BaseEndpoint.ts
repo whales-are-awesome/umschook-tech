@@ -3,7 +3,7 @@ import hasId from '@/types/hasId';
 import wait from '@/helpers/wait';
 
 export default abstract class BaseEndpoint<T extends hasId> implements IEndpoint<T> {
-    constructor(public data:T[] = [] ) {
+    protected constructor(public data:T[] = [] ) {
     }
 
     async fetch(): Promise<T[]> {

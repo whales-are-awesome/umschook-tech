@@ -37,16 +37,20 @@ import SelectField from '@/UI/SelectField/SelectField.vue';
 
 import useClassTypes from './hooks/useClassTypes';
 import useSubjects from './hooks/useSubjects';
-import { IProductFull } from '@/types/entries/product';
+import { IProduct } from '@/types/entries/product';
 import Handler from './models/Handler';
 
 
 interface IProps {
-    modelValue: IProductFull[]
+    modelValue: IProduct[]
+}
+
+interface IEmits {
+    (e: 'update:modelValue', value: IProps['modelValue']): void
 }
 
 const props = defineProps<IProps>();
-const emit = defineEmits(['update:modelValue']);
+const emit = defineEmits<IEmits>();
 
 const localValue = ref([...props.modelValue]);
 
